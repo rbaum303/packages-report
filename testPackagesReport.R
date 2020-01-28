@@ -5,8 +5,6 @@
 library(tidyverse)
 packages <- as.data.frame(installed.packages())
 
-#test add modifications 
-
 ## if you use dplyr, code like this will work:
 apt <- packages %>%
   select(Package, Built)
@@ -21,9 +19,12 @@ apt_freqtable <- packages %>%
   count(Built) %>%
   mutate(prop = n / sum(n))
 
+readr::write_csv(apt_freqtable, here::here())
+
 ## write this data frame to data/add-on-packages-freqtable.csv
 ## hint: readr::write_csv() or write.table()
 ## idea: try using here::here() to create the file path
+
 
 ## YES overwrite the files that are there now
 ## they are old output from me (Jenny)
