@@ -1,8 +1,10 @@
-packages <- installed.packages()
+library(tidyverse)
+packages <- as.data.frame(installed.packages())
+
+#test add modifications 
 
 ## if you use dplyr, code like this will work:
 apt <- packages %>%
-  filter(is.na(Priority)) %>%
   select(Package, Built)
 
 ## write this new, smaller data frame to data/add-on-packages.csv
